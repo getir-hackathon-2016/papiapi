@@ -1,0 +1,54 @@
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+
+  </head>
+  <body>
+    <div class="container" ng-controller="AppCtrl1">
+    <h1>Alış Veriş Listesi</h1>
+    <table class="table table-stripped">
+    	<tr><td><input type="text" class="form-control" ng-model="contact.names"></td></tr></table>
+    	<table class="table table-striped ">
+  <thead>
+
+<tr>
+	<th>Ürün</th>
+	<th>Alıcı Email</th>
+	<th>Numara</th>
+	<th>Onayla</th>
+	<th>Güncelle</th>
+</tr>
+  </thead>
+  <tbody>
+  	<tr>
+    <td><input type="text" class="form-control" ng-model="contact.name"></td>
+    <td><input type="email" class="form-control" ng-model="contact.email"></td>
+    <td><input type="number" class="form-control" ng-model="contact.mobile"></td>
+    <td><button ng-click="addContact()" class="btn btn-success">Sepete ekle</button></td>
+  	<td><button ng-click="update()" class="btn btn-primary">Güncelle</button></td>
+  	</tr>
+<tr ng-repeat="contact in contactList |filter:contact.names| orderBy:-1">
+	<td>{{contact.name}}</td>
+	<td>{{contact.email}}</td>
+	<td>{{contact.mobile}}</td>
+	<td><button class="btn btn-danger" ng-click="remove(contact._id)">Kaldır</button> </td>
+	<td><button class="btn btn-warning" ng-click="edit(contact._id)">Düzenle</button> </td>
+
+
+</tr>
+
+  </tbody>
+    </table>     
+    </div>
+
+  
+  	 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="/controllers/controller.js"></script>     
+  </body>
+</html>
